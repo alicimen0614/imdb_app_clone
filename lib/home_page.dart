@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
+import 'package:imdb_clone/widgets/custom_container.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -107,8 +108,10 @@ class HomePage extends StatelessWidget {
                 textAlign: TextAlign.start,
               ),
             ),
-            _listViewContainerBuilder(
-                widgetItem: ListView.builder(
+            CustomContainer(
+                showBoxShadow: true,
+                height: Const.screenSize.height * 0.26,
+                child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
@@ -137,13 +140,16 @@ class HomePage extends StatelessWidget {
                           ],
                         ),
                       );
-                    }),
-                showTextOnTop: false),
+                    })),
             SizedBox(
               height: Const.minSize,
             ),
-            _listViewContainerBuilder(
-                widgetItem: ListView.builder(
+            CustomContainer(
+                showBoxShadow: true,
+                height: Const.screenSize.height * 0.3,
+                containerTitle: "Born today",
+                showButtonOnTop: true,
+                child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
@@ -199,10 +205,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ],
                       );
-                    }),
-                showTextOnTop: true,
-                containerTitle: "Born today",
-                showButtonOnTop: true),
+                    })),
             SizedBox(
               height: Const.minSize,
             ),
@@ -217,8 +220,12 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: Const.minSize,
             ),
-            _listViewContainerBuilder(
-                widgetItem: Padding(
+            CustomContainer(
+                showBoxShadow: true,
+                height: Const.screenSize.height * 0.3,
+                containerTitle: "From your Watchlist",
+                showButtonOnTop: false,
+                child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
                   child: Column(
@@ -261,74 +268,9 @@ class HomePage extends StatelessWidget {
                       )
                     ],
                   ),
-                ),
-                showTextOnTop: true,
-                containerTitle: "From your Watchlist",
-                showButtonOnTop: false)
+                ))
           ],
         ),
-      ),
-    );
-  }
-
-  Container _listViewContainerBuilder(
-      {required Widget widgetItem,
-      required bool showTextOnTop,
-      String containerTitle = "",
-      bool showButtonOnTop = false}) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.white, boxShadow: [
-        BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
-          spreadRadius: 5,
-          blurRadius: 7,
-          offset: const Offset(0, 3), // changes position of shadow
-        ),
-      ]),
-      child: Column(
-        children: [
-          if (showTextOnTop != false)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Container(
-                        height: 20,
-                        width: 5,
-                        decoration: BoxDecoration(
-                            color: Color(Const.mainColor),
-                            borderRadius: BorderRadius.circular(5)),
-                      ),
-                      SizedBox(
-                        width: Const.minSize,
-                      ),
-                      Text(
-                        containerTitle,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                if (showButtonOnTop == true)
-                  TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "See all",
-                        style: TextStyle(color: Colors.blue),
-                      ))
-              ],
-            ),
-          Container(
-              height: showTextOnTop == false
-                  ? Const.screenSize.height * 0.26
-                  : Const.screenSize.height * 0.3,
-              color: Colors.white,
-              child: widgetItem),
-        ],
       ),
     );
   }
