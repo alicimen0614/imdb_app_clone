@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
-import 'package:imdb_clone/main_page.dart';
+import 'package:imdb_clone/screens/main_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -38,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: MainPage(),
       ),
     );

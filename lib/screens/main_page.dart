@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:imdb_clone/home_page.dart';
-import 'package:imdb_clone/search_page.dart';
-import 'package:imdb_clone/shorts_page.dart';
-import 'package:imdb_clone/user_page.dart';
+import 'package:imdb_clone/screens/home_page.dart';
+import 'package:imdb_clone/screens/search_page.dart';
+import 'package:imdb_clone/screens/shorts_page.dart';
+import 'package:imdb_clone/screens/user_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,10 +22,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: IndexedStack(
-        index: currentIndex,
-        children: pages,
-      ),
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
