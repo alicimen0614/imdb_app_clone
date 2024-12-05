@@ -12,9 +12,9 @@ class MainPage extends StatefulWidget {
 }
 
 final List<Widget> pages = [
-  HomePage(), //Ara sekmesi
-  SearchPage(),
-  ShortsPage(), UserPage()
+  const HomePage(), //Ara sekmesi
+  const SearchPage(),
+  const ShortsPage(), const UserPage()
 ];
 
 class _MainPageState extends State<MainPage> {

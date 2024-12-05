@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
+import 'package:imdb_clone/widgets/custom_card.dart';
 import 'package:imdb_clone/widgets/custom_container.dart';
 
 class HomePage extends StatelessWidget {
@@ -153,58 +154,13 @@ class HomePage extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     itemCount: 5,
                     itemBuilder: (context, index) {
-                      return Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10)),
-                            height: Const.screenSize.height * 0.28,
-                            width: Const.screenSize.width * 0.35,
-                            child: Card(
-                              color: Colors.white,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    decoration: const BoxDecoration(
-                                        color: Colors.black,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(10),
-                                            topRight: Radius.circular(10))),
-                                    height: Const.screenSize.height * 0.18,
-                                    child: ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10)),
-                                      child: Image.asset(
-                                        "assets/born_today.jpg",
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                  ),
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "Joel Kinnaman",
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  ),
-                                  const Spacer(),
-                                  const Padding(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: Text(
-                                      "45",
-                                      style: TextStyle(fontSize: 12),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
+                      return CustomCard(
+                          imageLink: Const.dummyRecentlyViewedData[0]
+                              ["imageLink"]!,
+                          title: Const.dummyRecentlyViewedData[0]["title"]!,
+                          height: Const.screenSize.height * 0.28,
+                          width: Const.screenSize.width * 0.35,
+                          pictureHeight: Const.screenSize.height * 0.18);
                     })),
             SizedBox(
               height: Const.minSize,

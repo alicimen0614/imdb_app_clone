@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Const.init(context);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'IMDB Clone',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.white),

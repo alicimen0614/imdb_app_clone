@@ -20,6 +20,7 @@ class CustomContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: showBoxShadow == true
@@ -68,9 +69,9 @@ class CustomContainer extends StatelessWidget {
                 if (showButtonOnTop == true)
                   TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child: Text(
                         "See all",
-                        style: TextStyle(color: Colors.blue),
+                        style: TextStyle(color: Colors.lightBlue[800]),
                       ))
               ],
             ),
