@@ -6,6 +6,7 @@ class CustomCard extends StatelessWidget {
   final double pictureHeight;
   final String imageLink;
   final String title;
+  final String? age;
 
   const CustomCard(
       {super.key,
@@ -13,7 +14,8 @@ class CustomCard extends StatelessWidget {
       required this.width,
       required this.pictureHeight,
       required this.imageLink,
-      required this.title});
+      required this.title,
+      this.age});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +56,15 @@ class CustomCard extends StatelessWidget {
                     style: const TextStyle(fontSize: 12),
                   ),
                 ),
+                const Spacer(),
+                if (age != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      age!,
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
               ],
             ),
           ),

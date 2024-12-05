@@ -1,5 +1,7 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
+import 'package:imdb_clone/widgets/best_of_2024_container.dart';
 import 'package:imdb_clone/widgets/custom_card.dart';
 import 'package:imdb_clone/widgets/custom_container.dart';
 
@@ -14,62 +16,133 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              color: Colors.grey.shade200,
-              height: Const.screenSize.height * 0.34,
-              child: Stack(
-                children: [
-                  SizedBox(
-                      height: Const.screenSize.height * 0.24,
-                      child: Image.asset(
-                        "assets/topImage.jpg",
-                        height: Const.screenSize.height * 0.23,
-                        width: double.infinity,
-                        fit: BoxFit.fill,
-                      )),
-                  Positioned(
-                    height: Const.screenSize.height * 0.18,
-                    width: Const.screenSize.width * 0.26,
-                    left: Const.minSize,
-                    bottom: Const.minSize,
-                    child: Card(
-                      shape: const BeveledRectangleBorder(),
-                      child: Image.asset(
-                        "assets/poster.jpg",
-                        fit: BoxFit.fill,
+            CarouselSlider.builder(
+              itemCount: Const.dummyHomeScreenSliderData.length,
+              options: CarouselOptions(
+                  enableInfiniteScroll: true,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 5),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  height: Const.screenSize.height * 0.36,
+                  viewportFraction: 1),
+              itemBuilder: (context, index, realIndex) {
+                return Container(
+                  color: Colors.grey.shade200,
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                          height: Const.screenSize.height * 0.26,
+                          width: double.infinity,
+                          child: Stack(
+                            children: [
+                              Image.network(
+                                Const.dummyHomeScreenSliderData[index]
+                                    ["mainImageLink"]!,
+                                height: Const.screenSize.height * 0.26,
+                                width: double.infinity,
+                                fit: BoxFit.fill,
+                              ),
+                              const Align(
+                                alignment: Alignment.center,
+                                child: Icon(
+                                  Icons.play_circle_outline,
+                                  color: Colors.white,
+                                  size: 60,
+                                ),
+                              ),
+                            ],
+                          )),
+                      Positioned(
+                        height: Const.screenSize.height * 0.18,
+                        width: Const.screenSize.width * 0.26,
+                        left: Const.minSize,
+                        bottom: Const.minSize,
+                        child: Card(
+                          shape: const BeveledRectangleBorder(),
+                          child: Image.network(
+                            Const.dummyHomeScreenSliderData[index]
+                                ["secondImageLink"]!,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
-                    ),
+                      Positioned(
+                        left: Const.screenSize.width * 0.32,
+                        right: 0,
+                        bottom: Const.screenSize.height * 0.025,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              Const.dummyHomeScreenSliderData[index]["title"]!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(fontSize: 14),
+                            ),
+                            SizedBox(
+                              height: Const.screenSize.height * 0.0025,
+                            ),
+                            Text(
+                              Const.dummyHomeScreenSliderData[index]
+                                  ["description"]!,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                  fontSize: 11, color: Colors.black54),
+                              textAlign: TextAlign.start,
+                            ),
+                            SizedBox(
+                              height: Const.screenSize.height * 0.0025,
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.thumb_up_outlined,
+                                  size: 15,
+                                  color: Colors.black54,
+                                ),
+                                SizedBox(
+                                  width: Const.screenSize.height * 0.0025,
+                                ),
+                                const Text(
+                                  "123",
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: Const.minSize,
+                                ),
+                                const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                  size: 15,
+                                ),
+                                SizedBox(
+                                  width: Const.screenSize.height * 0.0025,
+                                ),
+                                const Text(
+                                  "242",
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  Positioned(
-                    left: Const.screenSize.width * 0.3,
-                    right: 0,
-                    bottom: Const.screenSize.height * 0.025,
-                    child: const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "What 'Gladiator II' Stars Think of Ridley Scott's Directing Style",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(fontSize: 14),
-                        ),
-                        Text(
-                          "Watch the Interview",
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                              fontSize: 11, fontWeight: FontWeight.w400),
-                          textAlign: TextAlign.start,
-                        ),
-                        Icon(
-                          Icons.thumb_up,
-                          size: 15,
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                );
+              },
+            ),
+            SizedBox(
+              height: Const.minSize,
+            ),
+            const BestOf2024Container(),
+            SizedBox(
+              height: Const.minSize,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -114,7 +187,7 @@ class HomePage extends StatelessWidget {
                 height: Const.screenSize.height * 0.26,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: Const.dummyFeaturedTodayData.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -125,17 +198,18 @@ class HomePage extends StatelessWidget {
                             SizedBox(
                               height: Const.screenSize.height * 0.2,
                               width: Const.screenSize.width * 0.7,
-                              child: Image.asset(
-                                "assets/featured.jpg",
+                              child: Image.network(
+                                Const.dummyFeaturedTodayData[index]
+                                    ["imageLink"]!,
                                 fit: BoxFit.fill,
                               ),
                             ),
                             SizedBox(
                               height: Const.minSize,
                             ),
-                            const Text(
-                              "15 Fall Movies You Need to Know About",
-                              style: TextStyle(fontSize: 12),
+                            Text(
+                              Const.dummyFeaturedTodayData[index]["title"]!,
+                              style: const TextStyle(fontSize: 12),
                               textAlign: TextAlign.start,
                             )
                           ],
@@ -152,15 +226,17 @@ class HomePage extends StatelessWidget {
                 showButtonOnTop: true,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: 5,
+                    itemCount: Const.dummyBornTodayData.length,
                     itemBuilder: (context, index) {
                       return CustomCard(
-                          imageLink: Const.dummyRecentlyViewedData[0]
-                              ["imageLink"]!,
-                          title: Const.dummyRecentlyViewedData[0]["title"]!,
-                          height: Const.screenSize.height * 0.28,
-                          width: Const.screenSize.width * 0.35,
-                          pictureHeight: Const.screenSize.height * 0.18);
+                        imageLink: Const.dummyBornTodayData[index]
+                            ["imageLink"]!,
+                        title: Const.dummyBornTodayData[index]["name"]!,
+                        height: Const.screenSize.height * 0.28,
+                        width: Const.screenSize.width * 0.35,
+                        pictureHeight: Const.screenSize.height * 0.18,
+                        age: Const.dummyBornTodayData[index]["age"]!,
+                      );
                     })),
             SizedBox(
               height: Const.minSize,
