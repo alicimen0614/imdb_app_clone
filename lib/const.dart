@@ -136,6 +136,38 @@ class Const {
     }
   ];
 
+  static List<Map<String, String>> dummyTopPicksData = [
+    {
+      "imageLink":
+          "https://m.media-amazon.com/images/M/MV5BMWJlN2U5MzItNjU4My00NTM2LWFjOWUtOWFiNjg3ZTMxZDY1XkEyXkFqcGc@._V1_QL75_UY207_CR13,0,140,207_.jpg",
+      "imdbScore": "8.7",
+      "title": 'The Boys',
+    },
+    {
+      "imageLink":
+          "https://m.media-amazon.com/images/M/MV5BMDU2YmNiOTktMjE4Ny00NmFhLWIxZTYtOWY0ZWQ4MWM3YjdiXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,207_.jpg",
+      "imdbScore": "6.8",
+      "title": "Fear the Walking Dead",
+    },
+    {
+      "imageLink":
+          "https://m.media-amazon.com/images/M/MV5BMzYxNmMyMDItNDIwYi00MzAyLWI2NGUtZmM2N2I5YTNhNzA4XkEyXkFqcGc@._V1_QL75_UY207_CR2,0,140,207_.jpg",
+      "imdbScore": "7.7",
+      "title": 'Deadpool & Wolverine',
+    },
+    {
+      "imageLink":
+          "https://m.media-amazon.com/images/M/MV5BNTc0YmQxMjEtODI5MC00NjFiLTlkMWUtOGQ5NjFmYWUyZGJhXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,207_.jpg",
+      "imdbScore": "8.5",
+      "title": "Dune: Part One",
+    },
+    {
+      "imageLink":
+          "https://m.media-amazon.com/images/M/MV5BZTA1MDc0YzYtMzRiNy00NjkxLWExNWMtMjIwODBkNzg4ZTAyXkEyXkFqcGc@._V1_QL75_UX140_CR0,0,140,207_.jpg",
+      "imdbScore": "7.8",
+      "title": "The Batman",
+    }
+  ];
   static void init(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     minSize = screenSize.width * 0.03;

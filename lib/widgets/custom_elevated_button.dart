@@ -8,6 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   final String directory;
   final bool isIconFullFull;
   final Color iconBackgroundColor;
+  final double width;
 
   const CustomElevatedButton(
       {super.key,
@@ -16,12 +17,13 @@ class CustomElevatedButton extends StatelessWidget {
       required this.textColor,
       this.directory = "",
       this.isIconFullFull = false,
-      this.iconBackgroundColor = Colors.white});
+      this.iconBackgroundColor = Colors.white,
+      required this.width});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Const.screenSize.width - 70,
+      width: width,
       height: Const.screenSize.height * 0.05,
       child: ElevatedButton(
           onPressed: () {},

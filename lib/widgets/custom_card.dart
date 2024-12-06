@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imdb_clone/const.dart';
 
 class CustomCard extends StatelessWidget {
   final double height;
@@ -7,6 +8,7 @@ class CustomCard extends StatelessWidget {
   final String imageLink;
   final String title;
   final String? age;
+  final String imdbScore;
 
   const CustomCard(
       {super.key,
@@ -15,7 +17,8 @@ class CustomCard extends StatelessWidget {
       required this.pictureHeight,
       required this.imageLink,
       required this.title,
-      this.age});
+      this.age,
+      this.imdbScore = ""});
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +52,25 @@ class CustomCard extends StatelessWidget {
                         fit: BoxFit.cover,
                       )),
                 ),
+                if (imdbScore != "")
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Color(Const.mainColor),
+                        ),
+                        SizedBox(
+                          width: Const.screenSize.width * 0.01,
+                        ),
+                        Text(
+                          imdbScore,
+                          style: const TextStyle(fontSize: 14),
+                        ),
+                      ],
+                    ),
+                  ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

@@ -39,20 +39,23 @@ class _SignInPageState extends State<SignInPage> {
             SizedBox(
               height: Const.minSize,
             ),
-            const CustomElevatedButton(
+            CustomElevatedButton(
               title: "Sign in with IMDb",
               color: Colors.white,
               textColor: Colors.black,
               directory: "assets/imdb_logo.png",
+              width: Const.screenSize.width - 70,
             ),
             SizedBox(
               height: Const.minSize,
             ),
             CustomElevatedButton(
-                title: "Sign in with Amazon",
-                color: Colors.grey.shade300,
-                textColor: Colors.black,
-                directory: "assets/amazon_logo.png"),
+              title: "Sign in with Amazon",
+              color: Colors.grey.shade300,
+              textColor: Colors.black,
+              directory: "assets/amazon_logo.png",
+              width: Const.screenSize.width - 70,
+            ),
             SizedBox(
               height: Const.minSize,
             ),
@@ -62,6 +65,7 @@ class _SignInPageState extends State<SignInPage> {
               textColor: Colors.white,
               directory: "assets/google_logo.png",
               isIconFullFull: true,
+              width: Const.screenSize.width - 70,
             ),
             SizedBox(
               height: Const.minSize,
@@ -73,6 +77,7 @@ class _SignInPageState extends State<SignInPage> {
                     textColor: Colors.white,
                     directory: "assets/facebook.png",
                     isIconFullFull: true,
+                    width: Const.screenSize.width - 70,
                   )
                 : Row(
                     mainAxisSize: MainAxisSize.min,
@@ -110,6 +115,7 @@ class _SignInPageState extends State<SignInPage> {
               title: "Create an account",
               color: Color(Const.mainColor),
               textColor: Colors.black,
+              width: Const.screenSize.width - 70,
             ),
             SizedBox(
               height: Const.minSize,

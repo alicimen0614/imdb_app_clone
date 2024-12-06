@@ -5,6 +5,7 @@ import 'package:imdb_clone/screens/sign_in_page.dart';
 import 'package:imdb_clone/widgets/best_of_2024_container.dart';
 import 'package:imdb_clone/widgets/custom_card.dart';
 import 'package:imdb_clone/widgets/custom_container.dart';
+import 'package:imdb_clone/widgets/custom_elevated_button.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -299,12 +300,65 @@ class HomePage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(3))),
                         child: const Text(
                           "Sign In",
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.normal),
                         ),
                       )
                     ],
                   ),
-                ))
+                )),
+            SizedBox(
+              height: Const.minSize,
+            ),
+            CustomContainer(
+              height: Const.screenSize.height * 0.55,
+              containerTitle: "Top picks for you",
+              showButtonOnTop: true,
+              showBoxShadow: true,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: Text("TV shows and movies just for you"),
+                  ),
+                  SizedBox(
+                    height: Const.minSize,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: CustomElevatedButton(
+                      title: "Improve suggestions",
+                      color: Color(Const.mainColor),
+                      textColor: Colors.black,
+                      width: Const.screenSize.width - 180,
+                    ),
+                  ),
+                  SizedBox(
+                    height: Const.minSize,
+                  ),
+                  SizedBox(
+                    height: Const.screenSize.height * 0.4,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: Const.dummyTopPicksData.length,
+                      itemBuilder: (context, index) => CustomCard(
+                        height: Const.screenSize.height * 0.4,
+                        width: Const.screenSize.width * 0.4,
+                        pictureHeight: Const.screenSize.height * 0.22,
+                        imageLink: Const.dummyTopPicksData[index]["imageLink"]!,
+                        title: Const.dummyTopPicksData[index]["title"]!,
+                        imdbScore: Const.dummyTopPicksData[index]["imdbScore"]!,
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            SizedBox(
+              height: Const.minSize,
+            )
           ],
         ),
       ),
