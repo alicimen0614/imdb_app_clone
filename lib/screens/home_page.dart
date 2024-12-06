@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
+import 'package:imdb_clone/screens/sign_in_page.dart';
 import 'package:imdb_clone/widgets/best_of_2024_container.dart';
 import 'package:imdb_clone/widgets/custom_card.dart';
 import 'package:imdb_clone/widgets/custom_container.dart';
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
                       Positioned(
                         left: Const.screenSize.width * 0.32,
                         right: 0,
-                        bottom: Const.screenSize.height * 0.025,
+                        bottom: Const.screenSize.height * 0.015,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -78,9 +79,6 @@ class HomePage extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(fontSize: 14),
-                            ),
-                            SizedBox(
-                              height: Const.screenSize.height * 0.0025,
                             ),
                             Text(
                               Const.dummyHomeScreenSliderData[index]
@@ -288,7 +286,13 @@ class HomePage extends StatelessWidget {
                         height: Const.minSize,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const SignInPage(),
+                              ));
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(Const.mainColor),
                             shape: BeveledRectangleBorder(

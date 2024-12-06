@@ -36,10 +36,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.grey.shade200,
         resizeToAvoidBottomInset: false,
-        body: MainPage(),
+        body: const MainPage(),
       ),
     );
   }

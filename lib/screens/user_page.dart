@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imdb_clone/const.dart';
+import 'package:imdb_clone/screens/sign_in_page.dart';
 import 'package:imdb_clone/widgets/custom_card.dart';
 import 'package:imdb_clone/widgets/custom_container.dart';
 import 'package:imdb_clone/widgets/custom_outlined_button.dart';
@@ -13,7 +14,7 @@ class UserPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            _buildUserInfoCard(),
+            _buildUserInfoCard(context),
             SizedBox(
               height: Const.minSize,
             ),
@@ -257,7 +258,7 @@ class UserPage extends StatelessWidget {
     );
   }
 
-  _buildUserInfoCard() {
+  _buildUserInfoCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(color: Colors.grey.shade50, boxShadow: [
@@ -293,7 +294,13 @@ class UserPage extends StatelessWidget {
             ],
           ),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignInPage(),
+                  ));
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Color(Const.mainColor),
                 minimumSize:

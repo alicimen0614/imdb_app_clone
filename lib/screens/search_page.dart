@@ -285,7 +285,7 @@ class SearchPage extends StatelessWidget {
             SizedBox(
               height: Const.minSize,
             ),
-            Text(title)
+            FittedBox(child: Text(title))
           ],
         ),
       ),

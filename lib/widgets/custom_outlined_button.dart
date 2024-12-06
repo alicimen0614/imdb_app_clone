@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imdb_clone/screens/sign_in_page.dart';
 
 class CustomOutlinedButton extends StatelessWidget {
   final String text;
@@ -7,7 +8,13 @@ class CustomOutlinedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SignInPage(),
+            ));
+      },
       style: OutlinedButton.styleFrom(
           backgroundColor: Colors.white,
           shape: const RoundedRectangleBorder(
